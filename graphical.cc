@@ -7,9 +7,8 @@ int main() {
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(60);
     int numa = 0;
-    int numc = 0;
     sf::Font font;
-    sf::Text text;
+    sf::Text text, text2;
     if (!font.loadFromFile("Arial.ttf")) {
         std::cerr << "Failed to load font!" << std::endl;
         return 1;
@@ -17,10 +16,16 @@ int main() {
 
     text.setFont(font);  
     text.setString("Enter a first number: ");
-    
     text.setCharacterSize(24);  
     text.setFillColor(sf::Color::White);  
     text.setPosition(100.f, 100.f); 
+
+     text2.setString("Text 2");
+    text2.setFont(font);
+    text2.setCharacterSize(24);
+    text2.setFillColor(sf::Color::White);
+    text2.setPosition(100.f, 150.f);
+   
 
     while (window.isOpen()) {
         sf::Event event;
@@ -34,7 +39,13 @@ int main() {
                     // Convert character to integer
                     numa = event.text.unicode - '0';
                     text.setString("Enter a first number: " + std::to_string(numa));
+                   
                 }
+
+                
+               
+                                
+                
             }
         }
     
