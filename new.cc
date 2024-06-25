@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 int main() {
     int number;
     int numberc;
     char type;
+    int sqtype;
     char operation;
-    int result;
+    int result = 0;
 
-    std::cout << "Do you want to use indices(s) or multiplication/divison/addition/subtraction(m)?: ";
+    std::cout << "Do you want to use indices(s), roots(r) or  multiplication/divison/addition/subtraction(m)?: ";
     std::cin >> type;
 
     type = std::tolower(type);
@@ -20,15 +22,21 @@ int main() {
 
     switch(type) {
         case 's':
-        result = number * number;
-        break;
+        {
+            std::cout << "What indice do you want to use?: ";
+            std::cin >> sqtype;
+
+            result = pow(number, sqtype);
+            break;
+    }
+        
 
         case 'm':
-        std::cout << "Enter another number: ";
-        std::cin >> numberc;
+            std::cout << "Enter another number: ";
+            std::cin >> numberc;
 
-        std::cout << "Enter the operation you want to use: ";
-        std::cin >> operation;
+            std::cout << "Enter the operation you want to use: ";
+            std::cin >> operation;
 
         switch(operation) {
             case '+':
@@ -40,14 +48,25 @@ int main() {
             case '*':
                 result = number * numberc;
                 break;
+            case 'x':
+                result = number * numberc;
+                break;
             case '/':
                 result = number / numberc;
                 break;
         }
+        break;
+
+        case 'r':
+            result = sqrt(number);
+            break;
+
+
     }
 
     
-    std::cout << "Result: " << result;
+    std::cout << "Result: " << result << std::endl;
 
     return 0;
-}
+       }   
+

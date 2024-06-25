@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <cstdlib> 
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Tux Calculator");
@@ -8,7 +9,9 @@ int main() {
     window.setFramerateLimit(60);
     int numa = 0;
     sf::Font font;
-    sf::Text text, text2;
+    sf::Text text, buttonText;
+    sf::RectangleShape button(sf::Vector2f(300.f, 50.f)); 
+
     if (!font.loadFromFile("Arial.ttf")) {
         std::cerr << "Failed to load font!" << std::endl;
         return 1;
@@ -20,12 +23,14 @@ int main() {
     text.setFillColor(sf::Color::White);  
     text.setPosition(100.f, 100.f); 
 
-     text2.setString("Text 2");
-    text2.setFont(font);
-    text2.setCharacterSize(24);
-    text2.setFillColor(sf::Color::White);
-    text2.setPosition(100.f, 150.f);
-   
+    buttonText.setFont(font);
+    buttonText.setString("Run Program");
+    buttonText.setCharacterSize(24);
+    buttonText.setFillColor(sf::Color::Black);
+    buttonText.setPosition(100.f, 200.f);
+
+    button.setFillColor(sf::Color::Green);
+    button.setPosition(100.f, 200.f);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -33,30 +38,34 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
 
+            if (event.type == sf::Event::MouseButtonReleased) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                    sf::FloatRect buttonBounds = button.getGlobalBounds();
+                    if (buttonBounds.contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                        std::system("./newexec");
+                    }
+                }
+            }
+            
             if (event.type == sf::Event::TextEntered) {
-                // Handle ASCII characters entered (including numbers)
+
                 if (event.text.unicode >= '0' && event.text.unicode <= '9') {
-                    // Convert character to integer
                     numa = event.text.unicode - '0';
                     text.setString("Enter a first number: " + std::to_string(numa));
-                   
                 }
-
-                
-               
-                                
-                
             }
         }
     
         window.clear();
         window.draw(text);
 
+        window.draw(button);
+        window.draw(buttonText);
+
         window.display();
         
     }
-  
 
     return 0;
-  }
-
+}

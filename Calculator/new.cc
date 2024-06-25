@@ -1,16 +1,17 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 int main() {
     int number;
     int numberc;
     char type;
-    char sqtype;
+    int sqtype;
     char operation;
     int result = 0;
 
-    std::cout << "Do you want to use indices(s) or  multiplication/divison/addition/subtraction(m)?: ";
+    std::cout << "Do you want to use indices(s), roots(r) or  multiplication/divison/addition/subtraction(m)?: ";
     std::cin >> type;
 
     type = std::tolower(type);
@@ -22,26 +23,11 @@ int main() {
     switch(type) {
         case 's':
         {
-            std::cout << "Do you want to Square the number(S), Cube the number(C) or Quad the number(Q)?: ";
+            std::cout << "What indice do you want to use?: ";
             std::cin >> sqtype;
 
-        sqtype = std::tolower(sqtype);
-
-        switch(sqtype) {
-            case 's':
-                result = number * number;
-                break;
-
-            case 'c':
-                result = number * number * number;
-                break;
-
-            case 'q':
-                result = number * number * number * number;
-                break;
-            
-        }
-        break;
+            result = pow(number, sqtype);
+            break;
     }
         
 
@@ -71,29 +57,9 @@ int main() {
         }
         break;
 
-        //case 'r':
-        //{
-            //std::cout << "Do you want to Square Root the number(S), Cube Root the number(C) or Quad Root the number(Q)?: ";
-            //std::cin >> sqtype;
-
-        //sqtype = std::tolower(sqtype);
-
-        //switch(sqtype) {
-            //case 's':
-                //result = number / number;
-                //break;
-
-            //case 'c':
-                //result = number / number / number;
-                //break;
-
-            //case 'q':
-                //result = number / number / number / number;
-                //break;
-            
-        //}
-        //break;
-
+        case 'r':
+            result = sqrt(number);
+            break;
 
 
     }
