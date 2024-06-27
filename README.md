@@ -1,6 +1,6 @@
 # Tux-Calculator
 Use guide:
-Linux: if you have gcc/g++ installed type g++ -o sfml-app graphical.cc -lsfml-graphics -lsfml-window -lsfml-system into your terminal while being cd'd into where you have the files stored. To run the file type ./sfml-app.
+Linux: On normal ocassions you should be able to just type ./sfml-app. If that dosn't work compile it with this command (Works if you have gcc/g++ installed.):++ -o sfml-app graphical.cc -lsfml-graphics -lsfml-window -lsfml-system.
 
 Windows(Coming soon)
 
