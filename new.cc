@@ -61,8 +61,6 @@ int main() {
             result = sqrt(number);
             break;
 
-        case 'p'
-
 
     }
 
@@ -71,4 +69,3 @@ int main() {
 
     return 0;
        }   
-
