@@ -4,12 +4,12 @@
 using namespace std;
 
 int main() {
-    int number;
-    int numberc;
+    float number;
+    float numberc;
     char type;
     int sqtype;
     char operation;
-    int result = 0;
+    float result = 0;
 
     std::cout << "Do you want to use indices(s), roots(r) or  multiplication/divison/addition/subtraction(m)?: ";
     std::cin >> type;
@@ -60,6 +60,8 @@ int main() {
         case 'r':
             result = sqrt(number);
             break;
+
+        case 'p'
 
 
     }
